@@ -1,15 +1,18 @@
 package co.edu.unisabana.com.subjectsmanager.repository.dao;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import co.edu.unisabana.com.subjectsmanager.repository.dto.SubjectDTO;
+import co.edu.unisabana.com.subjectsmanager.repository.dto.SubjectDateDTO;
 
 public class SubjectInMemoryDAO implements ISubjectDAO {
-    private ArrayList<SubjectDTO> subjectDB;
+    private ArrayList<SubjectDTO> subjectDB = new ArrayList<SubjectDTO>();
 
     @Override
     public SubjectDTO createSubject(SubjectDTO subject) {
-        return null;
+        subjectDB.add(subject);
+        return subjectDB.get(subjectDB.size() - 1);
     }
 
     @Override
@@ -19,12 +22,14 @@ public class SubjectInMemoryDAO implements ISubjectDAO {
 
     @Override
     public SubjectDTO updateSubject(SubjectDTO subject) {
+
         return null;
     }
 
     @Override
-    public SubjectDTO readSubject(String name) {
-        return null;
+    public ArrayList<SubjectDTO> readSubject(String name) {
+        return (ArrayList<SubjectDTO>) this.subjectDB.stream().filter(subject -> name.contains(subject.getName()))
+                .collect(Collectors.toList());
     }
 
 }

@@ -1,5 +1,7 @@
 package co.edu.unisabana.com.subjectsmanager.repository.dao;
 
+import java.util.ArrayList;
+
 import co.edu.unisabana.com.subjectsmanager.repository.dto.SubjectDTO;
 
 public interface ISubjectDAO {
@@ -9,5 +11,5 @@ public interface ISubjectDAO {
 
     SubjectDTO updateSubject(SubjectDTO subject);
 
-    SubjectDTO readSubject(String name);
+    ArrayList<SubjectDTO> readSubject(String name);
 }
