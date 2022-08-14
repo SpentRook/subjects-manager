@@ -21,4 +21,8 @@ public class SubjectRepository {
     SubjectDTO updateByName(String name, SubjectDTO subject) {
         return null;
     }
+
+    SubjectDTO addSUbject(SubjectDTO subject) {
+        return subjectDB.createSubject(subject);
+    }
 }
