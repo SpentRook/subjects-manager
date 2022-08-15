@@ -7,9 +7,11 @@ import co.edu.unisabana.com.subjectsmanager.repository.dto.SubjectDTO;
 public interface ISubjectDAO {
     SubjectDTO createSubject(SubjectDTO subject);
 
-    void deleteSubject(String name);
+    void deleteSubject(SubjectDTO subject);
 
     SubjectDTO updateSubject(SubjectDTO subject);
 
     ArrayList<SubjectDTO> readSubject(String name);
+
+    ArrayList<SubjectDTO> filterByMatchSubject(String name);
 }

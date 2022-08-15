@@ -16,20 +16,28 @@ public class SubjectInMemoryDAO implements ISubjectDAO {
     }
 
     @Override
-    public void deleteSubject(String name) {
-
+    public void deleteSubject(SubjectDTO subject) {
+        subjectDB.remove(subject);
     }
 
     @Override
     public SubjectDTO updateSubject(SubjectDTO subject) {
-
-        return null;
+        ArrayList<SubjectDTO> currentSubject = this.readSubject(subject.getName());
+        int indexCurrentSubject = subjectDB.indexOf(currentSubject.get(0));
+        subjectDB.set(indexCurrentSubject, subject);
+        return subjectDB.get(indexCurrentSubject);
     }
 
     @Override
     public ArrayList<SubjectDTO> readSubject(String name) {
-        return (ArrayList<SubjectDTO>) this.subjectDB.stream().filter(subject -> name.contains(subject.getName()))
-                .collect(Collectors.toList());
+        return this.subjectDB.stream().filter(subject -> subject.getName().equals(name))
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    @Override
+    public ArrayList<SubjectDTO> filterByMatchSubject(String name) {
+        return this.subjectDB.stream().filter(subject -> subject.getName().contains(name))
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
 }

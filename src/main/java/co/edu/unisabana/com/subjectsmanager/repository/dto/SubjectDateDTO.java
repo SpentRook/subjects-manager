@@ -9,6 +9,9 @@ public class SubjectDateDTO {
     String classroom;
     String startHour;
     String endHour;
+
+    SubjectDateDTO() {
+    }
 }
 
 enum Days {

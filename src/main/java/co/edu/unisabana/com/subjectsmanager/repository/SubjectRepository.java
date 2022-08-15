@@ -17,12 +17,12 @@ public class SubjectRepository {
         return subjectDB.readSubject(name);
     }
 
-    public void deleteByName(String name) {
-        subjectDB.deleteSubject(name);
+    public void deleteSubject(SubjectDTO subject) {
+        subjectDB.deleteSubject(subject);
     }
 
-    public SubjectDTO updateByName(String name, SubjectDTO subject) {
-        return null;
+    public SubjectDTO updateByName(SubjectDTO subject) {
+        return subjectDB.updateSubject(subject);
     }
 
     public SubjectDTO addSubject(SubjectDTO subject) {
@@ -30,6 +30,6 @@ public class SubjectRepository {
     }
 
     public ArrayList<SubjectDTO> getAllSubjects() {
-        return subjectDB.readSubject("");
+        return subjectDB.filterByMatchSubject("");
     }
 }
