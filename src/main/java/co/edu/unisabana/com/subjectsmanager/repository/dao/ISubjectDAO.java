@@ -14,4 +14,6 @@ public interface ISubjectDAO {
     ArrayList<SubjectDTO> readSubject(String name);
 
     ArrayList<SubjectDTO> filterByMatchSubject(String name);
+
+    ArrayList<SubjectDTO> filterByParams(String name, int credits, String proffesor);
 }

@@ -17,6 +17,10 @@ public class SubjectRepository {
         return subjectDB.readSubject(name);
     }
 
+    public ArrayList<SubjectDTO> getSubjectByParams(String name, int credits, String professor) {
+        return subjectDB.filterByParams(name, credits, professor);
+    }
+
     public void deleteSubject(SubjectDTO subject) {
         subjectDB.deleteSubject(subject);
     }

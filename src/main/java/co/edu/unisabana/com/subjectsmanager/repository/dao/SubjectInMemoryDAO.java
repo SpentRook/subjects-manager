@@ -40,4 +40,14 @@ public class SubjectInMemoryDAO implements ISubjectDAO {
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
+    @Override
+    public ArrayList<SubjectDTO> filterByParams(String name, int credits, String professor) {
+        if(credits != 0){
+            return this.subjectDB.stream().filter(subject -> subject.getName().contains(name) && subject.getCredits() == credits && subject.getProfessor().contains(professor))
+                .collect(Collectors.toCollection(ArrayList::new));
+        }
+        return this.subjectDB.stream().filter(subject -> subject.getName().contains(name) && subject.getCredits() >= credits && subject.getProfessor().contains(professor))
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
 }
