@@ -28,8 +28,6 @@ public class CreateSubjectService {
                     String dbClassroom = dbDate.getClassroom();
                     int dbStartHour = Integer.parseInt(dbDate.getStartHour().split(":")[0]);
                     int dbEndHour = Integer.parseInt(dbDate.getEndHour().split(":")[0]);
-                    System.out.println(currentClassroom);
-                    System.out.println(dbClassroom);
                     if(dbDay.equals(currentDay) && dbClassroom.equals(currentClassroom) && ( currentStartHour >= dbStartHour && currentStartHour < dbEndHour)){
                         return true;
                     }
