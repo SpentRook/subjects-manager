@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import co.edu.unisabana.com.subjectsmanager.repository.SubjectRepository;
 import co.edu.unisabana.com.subjectsmanager.repository.dao.SubjectInMemoryDAO;
 import co.edu.unisabana.com.subjectsmanager.repository.dto.SubjectDTO;
-import co.edu.unisabana.com.subjectsmanager.repository.dto.SubjectDateDTO;
 import co.edu.unisabana.com.subjectsmanager.service.subject.CreateSubjectService;
 import co.edu.unisabana.com.subjectsmanager.service.subject.DeleteSubjectService;
 import co.edu.unisabana.com.subjectsmanager.service.subject.GetAllSubjectsService;
@@ -34,14 +33,14 @@ public class SubjectController {
 
     @GetMapping
     public ArrayList<SubjectDTO> getSubjectslistSubjects(@RequestParam Map<String, String> filter) {
-        if(filter == null){
+        if (filter == null) {
             GetAllSubjectsService getAllSubjectsService = new GetAllSubjectsService(subjectRepository);
             return getAllSubjectsService.run();
         }
-        GetSubjectByParams getSubjectByParams = new GetSubjectByParams(subjectRepository); 
+        GetSubjectByParams getSubjectByParams = new GetSubjectByParams(subjectRepository);
         return getSubjectByParams.run(filter.get("name"), filter.get("credits"), filter.get("professor"));
     }
-    
+
     @GetMapping("/{name}")
     public ArrayList<SubjectDTO> getSubjectByName(@PathVariable String name) {
         GetByNameSubjectService getByNameSubjectService = new GetByNameSubjectService(subjectRepository);
@@ -61,7 +60,6 @@ public class SubjectController {
         DeleteSubjectService deleteSubjectService = new DeleteSubjectService(subjectRepository);
         deleteSubjectService.run(name);
     }
-    
 
     @PutMapping("/{name}")
     public SubjectDTO updateSubject(@PathVariable String name, @RequestBody SubjectDTO subject) {

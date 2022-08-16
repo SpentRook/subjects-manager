@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import co.edu.unisabana.com.subjectsmanager.repository.dto.SubjectDTO;
-import co.edu.unisabana.com.subjectsmanager.repository.dto.SubjectDateDTO;
 
 public class SubjectInMemoryDAO implements ISubjectDAO {
     private ArrayList<SubjectDTO> subjectDB = new ArrayList<SubjectDTO>();
@@ -42,11 +41,15 @@ public class SubjectInMemoryDAO implements ISubjectDAO {
 
     @Override
     public ArrayList<SubjectDTO> filterByParams(String name, int credits, String professor) {
-        if(credits != 0){
-            return this.subjectDB.stream().filter(subject -> subject.getName().contains(name) && subject.getCredits() == credits && subject.getProfessor().contains(professor))
-                .collect(Collectors.toCollection(ArrayList::new));
+        if (credits != 0) {
+            return this.subjectDB.stream()
+                    .filter(subject -> subject.getName().contains(name) && subject.getCredits() == credits
+                            && subject.getProfessor().contains(professor))
+                    .collect(Collectors.toCollection(ArrayList::new));
         }
-        return this.subjectDB.stream().filter(subject -> subject.getName().contains(name) && subject.getCredits() >= credits && subject.getProfessor().contains(professor))
+        return this.subjectDB.stream()
+                .filter(subject -> subject.getName().contains(name) && subject.getCredits() >= credits
+                        && subject.getProfessor().contains(professor))
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 

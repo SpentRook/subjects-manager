@@ -1,0 +1,108 @@
+{
+    "info": {
+        "_postman_id": "ab681ac2-bcaa-45e2-9331-dc36d132d0cc",
+        "name": "SubjectsManager",
+        "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Subjects",
+            "item": [
+                {
+                    "name": "New Subject",
+                    "id": "bbaf19fd-aab5-4763-b91b-4da92fffe407",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"name\": \"CORE 1\",\r\n    \"credits\": 2,\r\n    \"professor\": \"Daniel Orlando Saavedra Fonnegra\",\r\n    \"dates\":[{\r\n        \"day\": \"MARTES\",\r\n        \"classroom\": \"E-101\",\r\n        \"startHour\":\"12:00\",\r\n        \"endHour\": \"14:00\"\r\n    },\r\n    {\r\n        \"day\": \"MIERCOLES\",\r\n        \"classroom\": \"E-203\",\r\n        \"startHour\":\"12:00\",\r\n        \"endHour\": \"14:00\"\r\n    }]\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "localhost:8080/subjects"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get All Subjects",
+                    "id": "c3ac3e0d-577e-4a3c-b6c5-e04b76d87801",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "localhost:8080/subjects"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Subject By Name",
+                    "id": "0ec511cd-fa89-4860-ab07-a8c2b5effef8",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": "localhost:8080/subjects/CORE 1"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Subject",
+                    "id": "6103c2f7-7494-4c61-ba77-8ceb6b6ba168",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "localhost:8080/subjects/mecanica 2"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Subject",
+                    "id": "86ba1dd5-89a6-495e-bf3b-20dfa9a83ac4",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"professor\": \"Jefferson\",\r\n    \"credits\": 5\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "localhost:8080/subjects/CORE 1"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get All Subjects WIth ?",
+                    "id": "f9a0f5a9-052c-484d-b3d0-fc83e0412414",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "localhost:8080/subjects?credits=2",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8080",
+                            "path": [
+                                "subjects"
+                            ],
+                            "query": [
+                                {
+                                    "key": "credits",
+                                    "value": "2"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ],
+            "id": "8c801703-7452-4c39-8e85-d65b7b5cb9cf"
+        }
+    ]
+}
