@@ -14,6 +14,3 @@ public class SubjectDateDTO {
     }
 }
 
-enum Days {
-    LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO
-}
