@@ -33,21 +33,19 @@ public class SubjectController {
     private SubjectRepository subjectRepository = new SubjectRepository(new SubjectInMemoryDAO());
 
     @GetMapping
-    public ArrayList<SubjectDTO> getSubjectslistSubjects() {
-        GetAllSubjectsService getAllSubjectsService = new GetAllSubjectsService(subjectRepository);
-        return getAllSubjectsService.run();
+    public ArrayList<SubjectDTO> getSubjectslistSubjects(@RequestParam Map<String, String> filter) {
+        if(filter == null){
+            GetAllSubjectsService getAllSubjectsService = new GetAllSubjectsService(subjectRepository);
+            return getAllSubjectsService.run();
+        }
+        GetSubjectByParams getSubjectByParams = new GetSubjectByParams(subjectRepository); 
+        return getSubjectByParams.run(filter.get("name"), filter.get("credits"), filter.get("professor"));
     }
     
     @GetMapping("/{name}")
     public ArrayList<SubjectDTO> getSubjectByName(@PathVariable String name) {
         GetByNameSubjectService getByNameSubjectService = new GetByNameSubjectService(subjectRepository);
         return getByNameSubjectService.run(name);
-    }
-
-    @GetMapping("/filter")
-    public ArrayList<SubjectDTO> filterSubjects(@RequestParam Map<String, String> filter ){
-        GetSubjectByParams getSubjectByParams = new GetSubjectByParams(subjectRepository); 
-        return getSubjectByParams.run(filter.get("name"), filter.get("credits"), filter.get("professor"));
     }
 
     @PostMapping
